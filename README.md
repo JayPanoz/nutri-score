@@ -74,6 +74,11 @@ Note: TypeScript definition are included in the project
 
 ... Work in progress ...
 
+### Update
+
+- [Solid](https://www.santepubliquefrance.fr/determinants-de-sante/nutrition-et-activite-physique/articles/nutri-score/documents/rapport-2022-sur-les-modifications-de-l-algorithme-de-calcul-pour-les-aliments-solides-proposees-par-le-comite-scientifique-du-nutri-score)
+- [Beverage](https://www.santepubliquefrance.fr/determinants-de-sante/nutrition-et-activite-physique/documents/rapport-synthese/update-of-the-nutri-score-algorithm-for-beverages.-second-update-report-from-the-scientific-committee-of-the-nutri-score-v2-2023)
+
 ## Contribution
 
 Feel free to add suggestions, PRs, comments and bug reports.
