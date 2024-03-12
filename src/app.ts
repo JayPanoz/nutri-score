@@ -12,7 +12,7 @@ export const nutriScore = {
     const fruitScore: number = nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.FRUIT][foodType], nutrientValues[NUTRIENT_TYPES.FRUIT]);
     const fiberScore: number = nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.FIBERS][foodType], nutrientValues[NUTRIENT_TYPES.FIBERS]);
 
-    return badNutrientsScore >= 11 && fruitScore < 5 ? badNutrientsScore - fiberScore - fruitScore : badNutrientsScore - goodNutrientsScore;
+    return badNutrientsScore >= 11 ? badNutrientsScore - fiberScore - fruitScore : badNutrientsScore - goodNutrientsScore;
   },
 
   calculateClass: (nutrientValues: INutrientValues, foodType: FOOD_TYPE = FOOD_TYPE.SOLID): string => {
