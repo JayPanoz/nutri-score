@@ -43,12 +43,12 @@ test("Test calculation with special case", () => {
   const result: number = nutriScore.calculate(
     {
       energy: 2000,
-      fibers: 3,
+      fibers: 6,
       fruit_percentage: 42,
-      proteins: 5,
+      proteins: 9,
       saturated_fats: 3,
-      sodium: 500,
-      sugar: 22,
+      salt: 1.1,
+      sugar: 15,
     },
     FOOD_TYPE.SOLID,
   );
@@ -56,21 +56,27 @@ test("Test calculation with special case", () => {
 });
 
 test("Test individual nutrients", () => {
-  expect(nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.FIBERS][FOOD_TYPE.SOLID], 3)).toBe(3);
-  expect(nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.PROTEINS][FOOD_TYPE.SOLID], 5)).toBe(3);
+  expect(nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.FIBERS][FOOD_TYPE.SOLID], 6)).toBe(3);
+  expect(nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.PROTEINS][FOOD_TYPE.SOLID], 8)).toBe(3);
   expect(nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.FRUIT][FOOD_TYPE.SOLID], 42)).toBe(1);
+});
+
+test("Test presence of non-nutritious sweetener only in beverage", () => {
+  expect(nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.SWEETENER][FOOD_TYPE.BEVERAGE], 0)).toBe(0);
+  expect(nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.SWEETENER][FOOD_TYPE.BEVERAGE], 1)).toBe(4);
+  expect(nutriScore.nutrientScore(scoreTable[NUTRIENT_TYPES.SWEETENER][FOOD_TYPE.SOLID], 1)).toBe(0);
 });
 
 test("Test another calculation without special case", () => {
   const result: number = nutriScore.calculate(
     {
       energy: 0,
-      fibers: 3,
+      fibers: 6,
       fruit_percentage: 42,
-      proteins: 5,
+      proteins: 9,
       saturated_fats: 2,
-      sodium: 500,
-      sugar: 22,
+      salt: 1.1,
+      sugar: 15,
     },
     FOOD_TYPE.SOLID,
   );
@@ -81,12 +87,12 @@ test("Test different calculation without special case", () => {
   const result: number = nutriScore.calculate(
     {
       energy: 0,
-      fibers: 4,
+      fibers: 7,
       fruit_percentage: 60,
-      proteins: 2,
+      proteins: 3,
       saturated_fats: 2,
-      sodium: 500,
-      sugar: 10,
+      salt: 1.1,
+      sugar: 9,
     },
     FOOD_TYPE.SOLID,
   );
@@ -97,12 +103,12 @@ test("Test different calculation without special case", () => {
   const result: string = nutriScore.calculateClass(
     {
       energy: 0,
-      fibers: 4,
+      fibers: 7,
       fruit_percentage: 60,
-      proteins: 2,
+      proteins: 3,
       saturated_fats: 2,
-      sodium: 500,
-      sugar: 10,
+      salt: 1.1,
+      sugar: 9,
     },
     FOOD_TYPE.SOLID,
   );
